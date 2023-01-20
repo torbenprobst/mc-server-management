@@ -1,0 +1,27 @@
+[Unit]
+
+Description=Minecraft Server
+
+After=network.target
+
+[Service]
+
+Nice=1
+
+KillMode=none
+
+SuccessExitStatus=0 1
+
+#ProtectHome=true
+
+ProtectSystem=full
+
+NoNewPrivileges=true
+
+ExecStart=/bin/bash <path-to-minecraft-start-script>
+
+ExecStop=<path-to-mcrcon-executable> -H 127.0.0.1 -P 25575 -p <rcon-password> stop
+
+[Install]
+
+WantedBy=default.target
